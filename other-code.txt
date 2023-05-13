@@ -1,0 +1,16 @@
+     var drop1 = L.marker([40.82684321049693, -72.65062642255916]).bindPopup("Test Drop at House");
+     var drop2 = L.marker([40.8627, -72.7044]).bindPopup("Test Drop at House");
+
+     var avaliable = L.layerGroup([drop1]);
+     var collected = L.layerGroup([drop2]);
+
+     var baseMaps = {
+        "Simple": simple
+     };
+
+     var overlayMaps = {
+        "Up For Collected": avaliable,
+        "Collected Already": collected
+     };
+
+     var layerControl = L.control.layers(baseMaps, overlayMaps).addTo(map);

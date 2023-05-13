@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Object Project</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI="crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM="crossorigin=""></script>
+  </head>
+  <body>
+    <div class="header">
+      <img src="logo.png" />
+      <h1 class="title">Object Project</h1>
+    </div>
+    <div id="map"></div>
+    <script>
+      var marker = L.icon({
+        iconUrl: 'marker.png',
+        shadowUrl: 'shadow.png',
+
+        iconAnchor: [5.5, 5.5],
+        shadowAnchor: [5.5, 5.5],
+        popupAnchor: [0, -10],
+
+     });
+
+     var drop1 = L.marker([40.80964656721318, -72.64157230819202], {icon: marker}).bindPopup("<h1> Object Sphere </h1> <p>This is my first ever drop. I designed this print in Tinkercad and added a magnet to stick it on metals. Each find is equipped with a QR code which provides info about the project, what the find is, and how to claim your find! Happy searching!</p> <img src='logo.png'/> <h3> Dropped on 5/13/23 </h3>");
+
+     var avaliable = L.layerGroup([drop1]);
+     var collected = L.layerGroup([]);
+
+     var overlayMaps = {
+        "Up For Collection": avaliable,
+        "Collected Already": collected
+     };
+
+     var baseMaps = {};
+
+     var map = L.map('map', {
+      center: [40.87052813289594, -72.68977272169089],
+      zoom: 11,
+      layers: [avaliable, collected]
+     });
+
+     L.tileLayer('https://api.maptiler.com/maps/bright-v2/{z}/{x}/{y}.png?key=JlakA8xWFOQIHrFykew1', {
+        attribution: '<a href="https://www.maptiler.com/copyright/" target="_blank">&copy; MapTiler</a> <a href="https://www.openstreetmap.org/copyright" target="_blank">&copy; OpenStreetMap contributors</a>',
+        maxZoom: 25,
+        maxNativeZoom: 19,
+     }).addTo(map);
+
+     var layerControl = L.control.layers(baseMaps, overlayMaps).addTo(map);
+    </script>
+    
+  </body>
+</html>

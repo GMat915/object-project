@@ -1,0 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Jost:wght@500&display=swap');
+
+.header {
+  white-space: nowrap;
+  overflow-x: auto;
+  height: 100px;
+}
+
+.header img {
+  margin: 0 auto;
+  display: inline-block;
+}
+
+.title {
+  text-align: center;
+  font-family: 'Jost', sans-serif;
+  font-weight: 500;
+  display: inline-block;
+}
+
+#map {height: 590px;}
+
